@@ -2,28 +2,18 @@ import React from 'react';
 
 import Header from '../../components/Header';
 import TeacherItem from '../../components/TeacherItem';
+import Input from '../../components/Input';
 
-import { Container, InputBlock, Label, Input, SearchTeachers, Main } from './styles';
+import { Container, SearchTeachers, Main } from './styles';
 
 const TeacherList: React.FC = () => {
     return (
         <Container>
             <Header title="Esses são os proffys disponíveis.">
                 <SearchTeachers>
-                    <InputBlock>
-                        <Label htmlFor="subject">Matéria</Label>
-                        <Input type="text" id="subject"/>
-                    </InputBlock>
-
-                    <InputBlock>
-                        <Label htmlFor="week_day">Dia da semana</Label>
-                        <Input type="text" id="week_day"/>
-                    </InputBlock>
-
-                    <InputBlock>
-                        <Label htmlFor="subject">Matéria</Label>
-                        <Input type="text" id="subject"/>
-                    </InputBlock>
+                    <Input label='Matéria' name='subject' />
+                    <Input label='Dia da semana' name='week_day' />
+                    <Input label='Hora' name='time' type="time" />
                 </SearchTeachers>
             </Header>
 
