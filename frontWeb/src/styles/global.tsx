@@ -46,6 +46,7 @@ const GlobalStyle = createGlobalStyle`
 
     body, input, button, textarea {
         font: 500 1.6rem Poppins, sans-serif;
+        color: var(--color-text-base);
     }
 
     img {

@@ -1,10 +1,13 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { Container } from './styles';
+import Header from '../../components/Header';
 
 const TeacherForm: React.FC = () => {
     return (
-        <h1>Teacher Form</h1>
+        <Container className="container">
+            <Header title="Que incrível que você quer dar aulas!" />
+        </Container>
     );
 }
 
