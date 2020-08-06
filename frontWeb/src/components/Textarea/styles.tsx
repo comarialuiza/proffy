@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export const InputBlock = styled.div`
+export const TextareaBlock = styled.div`
     position: relative;
-    margin-bottom: 2rem;
+    margin-top: 2rem;
 
     @media (max-width: 700px) {
         margin-top: 1.4rem;
@@ -16,7 +16,7 @@ export const InputBlock = styled.div`
         position: absolute;
         left: 1.6rem;
         right: 1.56rem;
-        bottom: 0;
+        bottom: 7px;
     }
 `;
 
@@ -24,14 +24,16 @@ export const Label = styled.label`
     color: var(--color-text-in-primary);
     font-size: 1.4rem;
 `;
-export const InputField = styled.input`
+export const TextareaField = styled.textarea`
     width: 100%;
-    height: 5.6rem;
+    height: 16rem;
     margin-top: .8rem;
     border-radius: .8rem;
     background: var(--color-input-background);
     border: 1px solid var(--color-line-in-white);
     outline: 0;
-    padding: 0 1.6rem;
+    padding: 1.2rem 1.6rem;
+    resize: vertical;
     font: 1.6rem Archivo;
+    min-height: 8rem;
 `;

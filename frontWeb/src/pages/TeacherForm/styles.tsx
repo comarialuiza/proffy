@@ -76,7 +76,7 @@ export const Footer = styled.footer`
     }
 `;
 
-export const Button = styled.button`
+export const SubmitButton = styled.button`
     width: 100%;
     height: 5.6rem;
     background: var(--color-secundary);
@@ -100,4 +100,25 @@ export const Button = styled.button`
         width: 20rem;
         margin-top: 0;
     } 
+`;
+
+export const Button = styled.button`
+    background: none;
+    border: 0;
+    color: var(--color-primary);
+    font: 700 1.6rem Archivo;
+    transition: color .2s;
+    cursor: pointer;
+
+    &&:hover {
+        color: var(--color-primary-dark);
+    }
+`;
+
+export const ScheduleItem = styled.div`
+    @media (min-width: 700px) {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        column-gap: 1.6rem;
+    }
 `;

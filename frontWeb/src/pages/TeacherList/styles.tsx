@@ -18,7 +18,7 @@ export const SearchTeachers = styled.form`
         grid-template-columns: repeat(3, 1fr);
         column-gap: 16px;
         position: absolute;
-        bottom: -28px;
+        bottom: -48px;
     }
 `;
 
