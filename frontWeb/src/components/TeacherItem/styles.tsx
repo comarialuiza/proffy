@@ -72,7 +72,7 @@ export const TeacherPrice = styled.p`
     }
 `;
 
-export const TeacherButton = styled.button`
+export const TeacherButton = styled.a`
     width: 20rem;
     height: 5.6rem;
     background: var(--color-secundary);
@@ -85,6 +85,7 @@ export const TeacherButton = styled.button`
     align-items: center;
     justify-content: space-evenly;
     transition: .2s;
+    text-decoration: none;
 
     @media (min-width: 700px) {
         width: 24.5rem;

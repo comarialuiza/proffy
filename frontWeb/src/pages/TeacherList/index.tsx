@@ -1,20 +1,50 @@
-import React from 'react';
+import React, { useState, FormEvent } from 'react';
 
 import Header from '../../components/Header';
-import TeacherItem from '../../components/TeacherItem';
+import TeacherItem, { Teacher } from '../../components/TeacherItem';
 import Input from '../../components/Input';
 import Select from '../../components/Select';
 
-import { Container, SearchTeachers, Main } from './styles';
+import { Container, SearchTeachers, Main, Button } from './styles';
+
+import api from '../../services/api';
 
 const TeacherList: React.FC = () => {
+    const [ subject, setSubject ] = useState('');
+    const [ time, setTime ] = useState('');
+    const [ weekDay, setWeekDay ] = useState('');
+    const [ teachers, setTeachers ] = useState([]);
+
+    async function handleSearchTeachers(e: FormEvent) {
+        try {
+            e.preventDefault();
+            console.log({ subject, time, weekDay });
+
+            const res = await api.get('/classes', {
+                params: {
+                    subject,
+                    week_day: weekDay,
+                    time
+                }
+            });
+
+            const teacherList = res.data;
+            setTeachers(teacherList);
+        } catch(err) {
+            console.log(err);
+            alert('Tente novamente mais tarde');
+        }
+    }
+
     return (
         <Container>
             <Header title="Esses são os proffys disponíveis.">
-                <SearchTeachers>
+                <SearchTeachers onSubmit={ handleSearchTeachers }>
                     <Select 
                         label='Matéria' 
                         name='subject' 
+                        value={ subject }
+                        onChange={ e => setSubject(e.target.value) }
                         options={[
                             { value: 'Artes', label: 'Artes' },
                             { value: 'Biologia', label: 'Biologia' },
@@ -32,6 +62,8 @@ const TeacherList: React.FC = () => {
                     <Select 
                         label='Dia da semana' 
                         name='week_day' 
+                        value={ weekDay }
+                        onChange={ e => setWeekDay(e.target.value) }
                         options={[
                             { value: '0', label: 'Domingo' },
                             { value: '1', label: 'Segunda-feira' },
@@ -42,16 +74,21 @@ const TeacherList: React.FC = () => {
                             { value: '6', label: 'Sábado' },
                         ]}    
                     />
-                    <Input label='Hora' name='time' type="time" />
+                    <Input 
+                        label='Hora' 
+                        name='time' 
+                        type="time" 
+                        value={ time }
+                        onChange={ e => setTime(e.target.value) }
+                    />
+                    <Button type="submit">Buscar</Button>
                 </SearchTeachers>
             </Header>
 
             <Main>
-                <TeacherItem />
-                <TeacherItem />
-                <TeacherItem />
-                <TeacherItem />
-                <TeacherItem />
+                { teachers.map((teacher: Teacher) => (
+                    <TeacherItem key={ teacher.id } teacher={ teacher }/>
+                )) }
             </Main>
         </Container>
     );
